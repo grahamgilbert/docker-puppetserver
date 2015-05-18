@@ -9,7 +9,7 @@ cat << EOF >> /etc/default/puppetserver
 JAVA_BIN="/usr/bin/java"
 
 # Modify this if you'd like to change the memory allocation, enable JMX, etc
-JAVA_ARGS=$PUPPETSERVER_JAVA_ARGS
+JAVA_ARGS="$PUPPETSERVER_JAVA_ARGS"
 
 # These normally shouldn't need to be edited if using OS packages
 USER="puppet"
