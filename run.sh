@@ -23,6 +23,5 @@ SERVICE_STOP_RETRIES=60
 # effect in systemd.
 # START_TIMEOUT=120
 EOF
-touch /var/log/puppetserver/puppetserver.log
-service puppetserver start
-tail -f /var/log/puppetserver/puppetserver.log
+
+puppetserver foreground

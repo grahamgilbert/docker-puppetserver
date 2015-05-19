@@ -13,7 +13,7 @@ VAGRANTFILE_API_VERSION = "2"
       # Every Vagrant virtual environment requires a box to build off of.
       config.vm.box = "puppetlabs/ubuntu-14.04-64-nocm"
       config.vm.provision :shell, :path => "Startup.sh"
-      config.vm.hostname = "puppet.grahamgilbert.com"
+      config.vm.hostname = "docker.grahamgilbert.com"
       config.vm.network "public_network"
       #config.vm.network "private_network", ip: "192.168.33.10"
 
