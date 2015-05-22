@@ -9,7 +9,8 @@ gem install CFPropertyList
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
 RUN sed -i s/START=no/START=yes/g /etc/default/puppet
-ADD cron /etc/cron.d
+RUN mkdir -p /etc/cron.d
+ADD cron /etc/cron.d/
 #RUN ln -sf /dev/stdout /var/log/puppetserver/puppetserver.log
 #RUN ln -sf /dev/stderr /var/log/puppetserver/error.log
 VOLUME ["/etc/puppet", "/etc/puppetserver", "/var/lib/puppet"]
