@@ -4,8 +4,8 @@ RUN apt-get update -y && apt-get install -y ruby-dev cron wget build-essential l
 wget https://apt.puppetlabs.com/puppetlabs-release-trusty.deb && \
 dpkg -i puppetlabs-release-trusty.deb && \
 apt-get update && apt-get -y install puppetserver && rm puppetlabs-release-trusty.deb && \
-gem install sqlite3 && \
-gem install CFPropertyList
+puppetserver gem install jdbc-sqlite3 && \
+puppetserver gem install CFPropertyList
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
 RUN sed -i s/START=no/START=yes/g /etc/default/puppet
