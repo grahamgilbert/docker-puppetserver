@@ -24,6 +24,4 @@ SERVICE_STOP_RETRIES=60
 # START_TIMEOUT=120
 EOF
 
-puppet agent -t
-
 puppetserver foreground
