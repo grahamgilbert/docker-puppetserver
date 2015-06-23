@@ -1,2 +1,6 @@
 .vagrant
 puppetserver
+
+Startup.sh
+
+puppet_conf.py
