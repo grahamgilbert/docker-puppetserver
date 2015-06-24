@@ -27,8 +27,8 @@ EOF
 ${PUPPETDB_PORT_8081_TCP_ADDR:="null"}
 if [ ! $PUPPETDB_PORT_8081_TCP_ADDR -eq "null" ]
 then
-    sed -i s/'<<PUPPETDB>>'/'$PUPPETDB_PORT_8081_TCP_ADDR:PUPPETDB_PORT_8081_TCP_PORT'/g /puppetdb.pp
-    pupppet apply /puppetdb.pp
+    #sed -i s/'<<PUPPETDB>>'/'$PUPPETDB_PORT_8081_TCP_ADDR:PUPPETDB_PORT_8081_TCP_PORT'/g /puppetdb.pp
+    puppet apply /puppetdb.pp
 fi
 
 puppetserver foreground

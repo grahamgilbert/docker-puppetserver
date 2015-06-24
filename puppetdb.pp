@@ -1,3 +1,3 @@
 class { 'puppetdb::master::config':
-    puppetdb_server => '<<PUPPETDB>>',
+    puppetdb_server => 'puppetdb',
 }
