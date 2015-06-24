@@ -17,6 +17,12 @@ INSTALL_DIR="/usr/share/puppetserver"
 CONFIG="/etc/puppetserver/conf.d"
 BOOTSTRAP_CONFIG="/etc/puppetserver/bootstrap.cfg"
 SERVICE_STOP_RETRIES=60
+${PUPPETDB_PORT_8081_TCP_ADDR:="null"}
+if [ ! $PUPPETDB_PORT_8081_TCP_ADDR -eq "null" ]
+then
+    sed -i s/'<<PUPPETDB>>'/'$PUPPETDB_PORT_8081_TCP_ADDR:PUPPETDB_PORT_8081_TCP_PORT'/g /puppetdb.pp
+    pupppet apply /puppetdb.pp
+fi
 
 # START_TIMEOUT can be set here to alter the default startup timeout in
 # seconds.  This is used in System-V style init scripts only, and will have no
