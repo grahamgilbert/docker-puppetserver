@@ -24,6 +24,17 @@ SERVICE_STOP_RETRIES=60
 # START_TIMEOUT=120
 EOF
 
+cat << EOF >> /etc/default/puppet
+# Defaults for puppet - sourced by /etc/init.d/puppet
+
+# Enable puppet agent service?
+# Setting this to "yes" allows the puppet agent service to run.
+# Setting this to "no" keeps the puppet agent service from running.
+START=yes
+
+# Startup options
+DAEMON_OPTS=""
+EOF
 # ${PUPPETDB_PORT_8081_TCP_ADDR:="null"}
 # if [ ! $PUPPETDB_PORT_8081_TCP_ADDR -eq "null" ]
 # then
