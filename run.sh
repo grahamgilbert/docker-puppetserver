@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PATH=/opt/puppetlabs/bin:$PATH
+
 cat << EOF >> /etc/default/puppetserver
 ###########################################
 # Init settings for puppetserver
@@ -50,4 +52,4 @@ fi
 #     puppet apply /puppetdb.pp
 # fi
 
-puppetserver foreground
+/opt/puppetlabs/bin/puppetserver foreground
