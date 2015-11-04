@@ -7,12 +7,13 @@ apt-get update && apt-get -y install puppetserver puppetdb-terminus && rm puppet
 /opt/puppetlabs/bin/puppetserver gem install jdbc-sqlite3 && \
 /opt/puppetlabs/bin/puppetserver gem install CFPropertyList
 ADD run.sh /run.sh
-ADD puppetdb.pp /puppetdb.pp
+#ADD puppetdb.pp /puppetdb.pp
 RUN chmod +x /run.sh
 RUN sed -i s/START=no/START=yes/g /etc/default/puppet
 RUN mkdir -p /etc/cron.d
 ADD cron /etc/cron.d/
 #RUN ln -sf /dev/stdout /var/log/puppetserver/puppetserver.log
 #RUN ln -sf /dev/stderr /var/log/puppetserver/error.log
-VOLUME ["/etc/puppet", "/etc/puppetserver", "/var/lib/puppet"]
-CMD /run.sh
+VOLUME ["/etc/puppetlabs/puppet", "/etc/puppetlabs/puppetserver", "/var/lib/puppet"]
+#CMD /run.sh
+CMD ["/opt/puppetlabs/bin/puppetserver", "foreground"]
