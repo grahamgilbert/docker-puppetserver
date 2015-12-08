@@ -3,7 +3,7 @@ ENV PUPPETSERVER_JAVA_ARGS="-Xms2g -Xmx2g -XX:MaxPermSize=256m"
 RUN apt-get update -y && apt-get install -y ruby-dev cron wget build-essential libsqlite3-dev && \
 wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb && \
 dpkg -i puppetlabs-release-pc1-trusty.deb && \
-apt-get update && apt-get -y install puppetserver=2.2.1-1puppetlabs1 puppetdb-terminus=2.3.8-1puppetlabs1 && rm puppetlabs-release-pc1-trusty.deb && \
+apt-get update && apt-get -y install puppetserver=2.1.2-1puppetlabs1 puppetdb-terminus=2.3.8-1puppetlabs1 && rm puppetlabs-release-pc1-trusty.deb && \
 /opt/puppetlabs/bin/puppetserver gem install jdbc-sqlite3 && \
 /opt/puppetlabs/bin/puppetserver gem install CFPropertyList
 ADD run.sh /run.sh
