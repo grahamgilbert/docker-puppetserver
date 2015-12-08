@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 PATH=/opt/puppetlabs/bin:$PATH
 
 cat << EOF >> /etc/default/puppetserver
@@ -52,4 +52,8 @@ fi
 #     puppet apply /puppetdb.pp
 # fi
 
-exec gosu /opt/puppetlabs/bin/puppetserver foreground
+#exec gosu puppet "$@"
+# echo `printenv`
+# /opt/puppetlabs/bin/puppetserver foreground
+# service puppetserver restart
+# tail -f /var/log/puppetlabs/puppetserver/puppetserver-daemon.log
