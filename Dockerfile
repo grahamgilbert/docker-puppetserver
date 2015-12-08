@@ -20,4 +20,4 @@ COPY set_conf.sh /set_conf.sh
 RUN chmod +x /set_conf.sh
 # CMD ['/set_conf.sh']
 # ENTRYPOINT ["/opt/puppetlabs/bin/puppetserver", "foreground"]
-CMD bash -C '/set_conf.sh';'/opt/puppetlabs/bin/puppetserver foreground'
+CMD sh -c '/set_conf.sh && /opt/puppetlabs/bin/puppetserver foreground'
