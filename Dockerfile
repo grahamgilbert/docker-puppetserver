@@ -6,9 +6,9 @@ dpkg -i puppetlabs-release-pc1-trusty.deb && \
 apt-get update && apt-get -y install puppetserver=2.1.2-1puppetlabs1 puppetdb-terminus=2.3.8-1puppetlabs1 && rm puppetlabs-release-pc1-trusty.deb && \
 /opt/puppetlabs/bin/puppetserver gem install jdbc-sqlite3 && \
 /opt/puppetlabs/bin/puppetserver gem install CFPropertyList
-ADD run.sh /run.sh
+# ADD run.sh /run.sh
 #ADD puppetdb.pp /puppetdb.pp
-RUN chmod +x /run.sh
+# RUN chmod +x /run.sh
 RUN sed -i s/START=no/START=yes/g /etc/default/puppet
 RUN mkdir -p /etc/cron.d
 ADD cron /etc/cron.d/
@@ -16,4 +16,7 @@ ADD cron /etc/cron.d/
 #RUN ln -sf /dev/stderr /var/log/puppetserver/error.log
 VOLUME ["/etc/puppetlabs/puppet", "/etc/puppetlabs/puppetserver", "/var/lib/puppet"]
 #CMD /run.sh
-CMD ["/opt/puppetlabs/bin/puppetserver", "foreground"]
+COPY set_conf.sh /set_conf.sh
+RUN chmod +x /set_conf.sh
+CMD ['/set_conf.sh']
+ENTRYPOINT ["/opt/puppetlabs/bin/puppetserver", "foreground"]
