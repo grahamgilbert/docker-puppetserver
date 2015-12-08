@@ -52,4 +52,4 @@ fi
 #     puppet apply /puppetdb.pp
 # fi
 
-/opt/puppetlabs/bin/puppetserver foreground
+exec gosu /opt/puppetlabs/bin/puppetserver foreground
