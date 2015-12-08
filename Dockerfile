@@ -13,7 +13,7 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 
 # Let's get Puppet Server installed
 RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y ruby-dev cron wget build-essential libsqlite3-dev && \
+    apt-get install -y ruby-dev cron wget supervisor build-essential libsqlite3-dev && \
     wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb && \
     dpkg -i puppetlabs-release-pc1-trusty.deb && \
     apt-get update && \
@@ -30,7 +30,7 @@ RUN chmod +x /run.sh
 RUN sed -i s/START=no/START=yes/g /etc/default/puppet
 RUN mkdir -p /etc/cron.d
 ADD cron /etc/cron.d/
-
+ADD supervisord.conf /supervisord.conf
 VOLUME ["/etc/puppetlabs/puppet", "/etc/puppetlabs/puppetserver", "/var/lib/puppet"]
 #ENTRYPOINT ["/run.sh"]
 
@@ -39,5 +39,6 @@ EXPOSE 8140
 #COPY set_conf.sh /set_conf.sh
 #RUN chmod +x /set_conf.sh
 # CMD ['/set_conf.sh']
-CMD ["/opt/puppetlabs/bin/puppetserver", "foreground"]
+#CMD ["/opt/puppetlabs/bin/puppetserver", "foreground"]
+CMD ["/usr/bin/supervisord", "--nodaemon", "-c", "/supervisord.conf"]
 #CMD sh -c '/set_conf.sh && /opt/puppetlabs/bin/puppetserver foreground'
