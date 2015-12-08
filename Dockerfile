@@ -18,5 +18,6 @@ VOLUME ["/etc/puppetlabs/puppet", "/etc/puppetlabs/puppetserver", "/var/lib/pupp
 #CMD /run.sh
 COPY set_conf.sh /set_conf.sh
 RUN chmod +x /set_conf.sh
-CMD ['/set_conf.sh']
-ENTRYPOINT ["/opt/puppetlabs/bin/puppetserver", "foreground"]
+# CMD ['/set_conf.sh']
+# ENTRYPOINT ["/opt/puppetlabs/bin/puppetserver", "foreground"]
+CMD bash -C '/set_conf.sh';'/opt/puppetlabs/bin/puppetserver foreground'
