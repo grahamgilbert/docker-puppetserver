@@ -26,8 +26,6 @@ RUN apt-get update && apt-get upgrade -y && \
 #apt-get -y install puppetserver=2.2.0-1puppetlabs1 puppetdb-terminus=2.3.8-1puppetlabs1 && \
 ADD run.sh /run.sh
 
-ADD run.sh /etc/rc.local
-RUN chmod +x /etc/rc.local
 RUN chmod +x /run.sh
 RUN sed -i s/START=no/START=yes/g /etc/default/puppet
 RUN mkdir -p /etc/cron.d

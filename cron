@@ -1,1 +1,2 @@
 @reboot sleep 60; puppet agent -t
+@reboot /run.sh
