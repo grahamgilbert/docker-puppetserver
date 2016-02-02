@@ -17,7 +17,7 @@ RUN apt-get update && apt-get upgrade -y && \
     wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb && \
     dpkg -i puppetlabs-release-pc1-trusty.deb && \
     apt-get update && \
-    apt-get -y install puppetserver=2.2.1-1puppetlabs1 puppetdb-terminus && \
+    apt-get -y install puppetserver=2.2.1-1puppetlabs1 puppetdb-termini && \
     rm puppetlabs-release-pc1-trusty.deb
 
     #  && \
