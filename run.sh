@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 PATH=/opt/puppetlabs/bin:$PATH
-
+mkdir -p /var/log/puppetlabs/puppetserver/
+touch /var/log/puppetlabs/puppetserver/puppetserver.log
 cat << EOF >> /etc/default/puppetserver
 ###########################################
 # Init settings for puppetserver
@@ -39,22 +40,4 @@ START=yes
 DAEMON_OPTS=""
 EOF
 
-PUPPETDB_CONF=/etc/puppet/puppetdb.conf
-
-if [ -a $PUPPETDB_CONF ]
-    then
-    sed -i s/'<<PUPPETDB_HOST>>'/'$PUPPETDB_PORT_8081_TCP_ADDR'/g $PUPPETDB_CONF
-    sed -i s/'<<PUPPETDB_PORT>>'/'$PUPPETDB_PORT_8081_TCP_PORT'/g $PUPPETDB_CONF
-fi
-# ${PUPPETDB_PORT_8081_TCP_ADDR:="null"}
-# if [ ! $PUPPETDB_PORT_8081_TCP_ADDR -eq "null" ]
-# then
-#     #sed -i s/'<<PUPPETDB>>'/'$PUPPETDB_PORT_8081_TCP_ADDR:PUPPETDB_PORT_8081_TCP_PORT'/g /puppetdb.pp
-#     puppet apply /puppetdb.pp
-# fi
-
-#exec gosu puppet "$@"
-# echo `printenv`
-# /opt/puppetlabs/bin/puppetserver foreground
-# service puppetserver restart
-# tail -f /var/log/puppetlabs/puppetserver/puppetserver-daemon.log
+service puppetserver start
