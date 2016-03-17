@@ -15,9 +15,10 @@ JAVA_ARGS="$PUPPETSERVER_JAVA_ARGS"
 
 # These normally shouldn't need to be edited if using OS packages
 USER="puppet"
-INSTALL_DIR="/usr/share/puppetserver"
-CONFIG="/etc/puppetserver/conf.d"
-BOOTSTRAP_CONFIG="/etc/puppetserver/bootstrap.cfg"
+GROUP="puppet"
+INSTALL_DIR="/opt/puppetlabs/server/apps/puppetserver"
+CONFIG="/etc/puppetlabs/puppetserver/conf.d"
+BOOTSTRAP_CONFIG="/etc/puppetlabs/puppetserver/bootstrap.cfg"
 SERVICE_STOP_RETRIES=60
 
 # START_TIMEOUT can be set here to alter the default startup timeout in
