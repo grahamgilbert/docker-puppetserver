@@ -31,7 +31,7 @@ RUN sed -i s/START=no/START=yes/g /etc/default/puppet
 RUN mkdir -p /etc/cron.d
 ADD cron /etc/cron.d/
 ADD supervisord.conf /supervisord.conf
-VOLUME ["/etc/puppetlabs/puppet", "/etc/puppetlabs/puppetserver", "/var/lib/puppet"]
+VOLUME ["/etc/puppetlabs/puppet", "/etc/puppetlabs/puppetserver", "/var/lib/puppet", "/etc/puppetlabs/code"]
 #ENTRYPOINT ["/run.sh"]
 
 EXPOSE 8140
